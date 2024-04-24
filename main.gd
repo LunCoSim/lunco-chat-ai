@@ -10,6 +10,7 @@ func _ready() -> void:
 	print(settings)
 	%AiAPI.set_api_key(settings.api_key)
 	load_messages()
+	load_file()
 	%Input.grab_focus()
 
 
@@ -24,7 +25,7 @@ func add_message(text, role="user"):
 	text_edit.text = str(text)
 	%Messages.add_child(text_edit)
 	#var y = 
-	$ScrollContainer.set_deferred("scroll_vertical",  %Messages.size.y+10000)
+	%ScrollMessages.set_deferred("scroll_vertical",  %Messages.size.y+10000)
 	#.scroll_vertical = $ScrollContainer. +
 	save_messages(messages)
 
@@ -59,5 +60,23 @@ func load_messages():
 			var text_edit := LCTextEdit.new()
 			text_edit.text = str(message["content"])
 			%Messages.add_child(text_edit)
-		$ScrollContainer.set_h_scroll(%Messages.size.y)
-		
+		%ScrollMessages.set_h_scroll(%Messages.size.y)
+
+# files
+
+func load_file():
+	var dir = DirAccess.open("user://")
+	
+	var files = dir.get_files()
+	
+	var root = %Tree.create_item()
+	%Tree.hide_root = true
+	
+	for file in files:
+		var ext = file.split(".")[-1]
+		if ext =="json":
+			var tree_item = %Tree.create_item()
+			tree_item.set_text(0, file)
+		#%Tree.add_child(tree_item)
+	
+	
