@@ -75,6 +75,11 @@ func load_messages(filename="messages.json"):
 func add_file():
 	file_name = "messages"+str(file_name_idx)+".json"
 	load_messages(file_name)
+	var tree_item = %Tree.create_item()
+	tree_item.set_text(0, file_name)
+	file_name_idx += 1
+	
+	tree_item.select(0)
 	
 func load_files_list():
 	var dir = DirAccess.open("user://")

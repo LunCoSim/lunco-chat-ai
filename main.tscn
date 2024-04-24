@@ -169,34 +169,54 @@ grow_vertical = 2
 theme = SubResource("Theme_dmwok")
 script = ExtResource("1_kyqgd")
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="AiAPI" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_kk3kp")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollMessages" type="ScrollContainer" parent="Container"]
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "New convo"
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollMessages" type="ScrollContainer" parent="VBoxContainer/Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="Messages" type="VBoxContainer" parent="Container/ScrollMessages"]
+[node name="Messages" type="VBoxContainer" parent="VBoxContainer/Container/ScrollMessages"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_nol30")
 
-[node name="InputContainer" type="HBoxContainer" parent="Container"]
+[node name="InputContainer" type="HBoxContainer" parent="VBoxContainer/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_m0en4")
 
-[node name="Input" type="TextEdit" parent="Container/InputContainer"]
+[node name="Input" type="TextEdit" parent="VBoxContainer/Container/InputContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
@@ -205,32 +225,14 @@ size_flags_vertical = 3
 theme = SubResource("Theme_wcxlx")
 placeholder_text = "Input"
 
-[node name="SendBtn" type="Button" parent="Container/InputContainer"]
+[node name="SendBtn" type="Button" parent="VBoxContainer/Container/InputContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Send"
 
-[node name="AiAPI" type="HTTPRequest" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_kk3kp")
-
-[node name="Tree" type="Tree" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 272.0
-offset_bottom = 591.0
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 595.0
-offset_right = 276.0
-offset_bottom = 640.0
-text = "New convo"
-
-[connection signal="on_send" from="Container/InputContainer" to="." method="_on_send_btn_pressed"]
-[connection signal="gui_input" from="Container/InputContainer/Input" to="Container/InputContainer" method="_on_input_gui_input"]
-[connection signal="pressed" from="Container/InputContainer/SendBtn" to="." method="_on_send_btn_pressed"]
 [connection signal="responded" from="AiAPI" to="." method="_on_ai_api_responded"]
-[connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]
-[connection signal="pressed" from="Button" to="." method="_on_new_convo_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/Tree" to="." method="_on_tree_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_new_convo_button_pressed"]
+[connection signal="on_send" from="VBoxContainer/Container/InputContainer" to="." method="_on_send_btn_pressed"]
+[connection signal="gui_input" from="VBoxContainer/Container/InputContainer/Input" to="VBoxContainer/Container/InputContainer" method="_on_input_gui_input"]
+[connection signal="pressed" from="VBoxContainer/Container/InputContainer/SendBtn" to="." method="_on_send_btn_pressed"]
