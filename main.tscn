@@ -1,9 +1,163 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbbe6d753c2fq"]
+[gd_scene load_steps=9 format=3 uid="uid://cbbe6d753c2fq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyqgd"]
 [ext_resource type="Script" path="res://ai_api.gd" id="2_kk3kp"]
+[ext_resource type="Script" path="res://input_container.gd" id="3_m0en4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5c2m"]
 
 [sub_resource type="Theme" id="Theme_dmwok"]
+/styles/color = SubResource("StyleBoxTexture_g5c2m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8fbk"]
+bg_color = Color(0.248782, 0.651645, 0.807461, 1)
+
+[sub_resource type="Theme" id="Theme_nol30"]
+AcceptDialog/colors/title_color = Color(0, 0.698039, 0, 1)
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_p8fbk")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+CodeEdit/styles/completion = null
+CodeEdit/styles/focus = null
+CodeEdit/styles/normal = null
+CodeEdit/styles/read_only = null
+ColorPickerButton/styles/disabled = null
+ColorPickerButton/styles/focus = null
+ColorPickerButton/styles/hover = null
+ColorPickerButton/styles/normal = null
+ColorPickerButton/styles/pressed = null
+ColorPresetButton/styles/preset_fg = null
+FlatButton/styles/disabled = null
+FlatButton/styles/hover = null
+FlatButton/styles/normal = null
+FlatButton/styles/pressed = null
+FlatMenuButton/styles/disabled = null
+FlatMenuButton/styles/hover = null
+FlatMenuButton/styles/normal = null
+FlatMenuButton/styles/pressed = null
+GraphEdit/styles/menu_panel = null
+GraphEdit/styles/panel = null
+GraphEditMinimap/styles/camera = null
+GraphEditMinimap/styles/node = null
+GraphEditMinimap/styles/panel = null
+GraphNode/styles/panel = null
+GraphNode/styles/panel_selected = null
+GraphNode/styles/slot = null
+GraphNode/styles/titlebar = null
+GraphNode/styles/titlebar_selected = null
+GraphNodeTitleLabel/styles/normal = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = null
+HScrollBar/styles/scroll_focus = null
+HSeparator/styles/separator = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/focus = null
+ItemList/styles/hovered = null
+ItemList/styles/panel = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+Label/styles/normal = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = null
+LineEdit/styles/read_only = null
+LinkButton/styles/focus = null
+MenuBar/styles/disabled = null
+MenuBar/styles/hover = null
+MenuBar/styles/normal = null
+MenuBar/styles/pressed = null
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = null
+MenuButton/styles/hover = null
+MenuButton/styles/normal = null
+MenuButton/styles/pressed = null
+OptionButton/styles/disabled = null
+OptionButton/styles/disabled_mirrored = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/hover_mirrored = null
+OptionButton/styles/normal = null
+OptionButton/styles/normal_mirrored = null
+OptionButton/styles/pressed = null
+OptionButton/styles/pressed_mirrored = null
+Panel/styles/panel = null
+PanelContainer/styles/panel = null
+PopupDialog/styles/panel = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = null
+ProgressBar/styles/background = null
+ProgressBar/styles/fill = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+ScrollContainer/styles/panel = null
+TabBar/styles/button_highlight = null
+TabBar/styles/button_pressed = null
+TabBar/styles/tab_disabled = null
+TabBar/styles/tab_focus = null
+TabBar/styles/tab_hovered = null
+TabBar/styles/tab_selected = null
+TabBar/styles/tab_unselected = null
+TabContainer/styles/panel = null
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_focus = null
+TabContainer/styles/tab_hovered = null
+TabContainer/styles/tab_selected = null
+TabContainer/styles/tab_unselected = null
+TabContainer/styles/tabbar_background = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = null
+TooltipPanel/styles/panel = null
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/focus = null
+Tree/styles/panel = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null
+VSeparator/styles/separator = null
+VSlider/styles/grabber_area = null
+VSlider/styles/grabber_area_highlight = null
+VSlider/styles/slider = null
+Window/styles/embedded_border = null
+Window/styles/embedded_unfocused_border = null
+
+[sub_resource type="Theme" id="Theme_wcxlx"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -15,39 +169,47 @@ grow_vertical = 2
 theme = SubResource("Theme_dmwok")
 script = ExtResource("1_kyqgd")
 
-[node name="SendBtn" type="Button" parent="."]
-unique_name_in_owner = true
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 1082.0
-offset_top = 70.0
-offset_right = 1129.0
-offset_bottom = 101.0
-text = "Send"
+offset_right = 1149.0
+offset_bottom = 577.0
 
-[node name="Messages" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.0
-offset_right = 825.0
-grow_vertical = 2
-
-[node name="Input" type="TextEdit" parent="Messages"]
+[node name="Messages" type="VBoxContainer" parent="ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-placeholder_text = "Input"
-
-[node name="Output" type="TextEdit" parent="Messages"]
-unique_name_in_owner = true
-auto_translate_mode = 1
-layout_mode = 2
-size_flags_vertical = 3
-placeholder_text = "Response"
+theme = SubResource("Theme_nol30")
 
 [node name="AiAPI" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_kk3kp")
 
-[connection signal="pressed" from="SendBtn" to="." method="_on_send_btn_pressed"]
+[node name="InputContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_m0en4")
+
+[node name="Input" type="TextEdit" parent="InputContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_wcxlx")
+placeholder_text = "Input"
+
+[node name="SendBtn" type="Button" parent="InputContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Send"
+
 [connection signal="responded" from="AiAPI" to="." method="_on_ai_api_responded"]
+[connection signal="on_send" from="InputContainer" to="." method="_on_send_btn_pressed"]
+[connection signal="gui_input" from="InputContainer/Input" to="InputContainer" method="_on_input_gui_input"]
+[connection signal="pressed" from="InputContainer/SendBtn" to="." method="_on_send_btn_pressed"]

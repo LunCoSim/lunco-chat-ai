@@ -25,20 +25,21 @@ func make_message(text, role="user"):
 	}
 	
 	
-func send(text):
-	
+func send_messages(messages):
 	var body = JSON.new().stringify({
-			"messages": [make_message(text)],
-			"temperature": 0.6,
-			"frequency_penalty": 0.1,
-			"presence_penalty": 0.1,
-			"max_tokens": 4096,
-			"model":model, 
-			"stream":false
-		})
-		
+		"messages": messages,
+		"temperature": 0.6,
+		"frequency_penalty": 0.1,
+		"presence_penalty": 0.1,
+		"max_tokens": 4096,
+		"model":model, 
+		"stream":false
+	})
+	
 	send_request(GROQ_URL, get_headers(), body)
 	
+func send_text(text):
+	send_messages([make_message(text)])
 
 ##
 func _on_request_complited(result, response_code, headers, body):

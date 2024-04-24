@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsd2cwka3v8p2"]
+
+[sub_resource type="GDScript" id="GDScript_qp2r7"]
+script/source = "extends CodeEdit
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Code" type="CodeEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_qp2r7")
