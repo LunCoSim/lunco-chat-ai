@@ -18,6 +18,9 @@ var max_tokens = 8192
 func _ready() -> void:
 	pass # Replace with function body.
 
+func set_api_key(_api_key):
+	api_key = _api_key
+	
 func make_message(text, role="user"):
 	return {
 		"role": role,

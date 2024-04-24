@@ -173,6 +173,7 @@ script = ExtResource("1_kyqgd")
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 577.0
+follow_focus = true
 
 [node name="Messages" type="VBoxContainer" parent="ScrollContainer"]
 unique_name_in_owner = true

@@ -3,7 +3,14 @@ extends Control
 var messages = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var settings = LCSettings.new()
+	
+	#settings.api_key = "" #saving api key to settings
+	settings.load()
+	print(settings)
+	%AiAPI.set_api_key(settings.api_key)
+	load_messages()
+	%Input.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +23,10 @@ func add_message(text, role="user"):
 	var text_edit := LCTextEdit.new()
 	text_edit.text = str(text)
 	%Messages.add_child(text_edit)
-	pass
+	#var y = 
+	$ScrollContainer.set_deferred("scroll_vertical",  %Messages.size.y+10000)
+	#.scroll_vertical = $ScrollContainer. +
+	save_messages(messages)
 
 func _on_send_btn_pressed() -> void:
 	var api = %AiAPI
@@ -31,3 +41,23 @@ func _on_send_btn_pressed() -> void:
 func _on_ai_api_responded(text: Variant) -> void:
 	print("Responded: ", text)
 	add_message(text, "assistant")
+
+## 
+
+func save_messages(messages):
+	var file = FileAccess.open("user://messages.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify(messages))
+	file.close()
+	
+func load_messages():
+	messages = []
+	if FileAccess.file_exists("user://messages.json"):
+		var messages_string = FileAccess.get_file_as_string("user://messages.json")
+		messages = JSON.parse_string(messages_string)
+		
+		for message in messages:
+			var text_edit := LCTextEdit.new()
+			text_edit.text = str(message["content"])
+			%Messages.add_child(text_edit)
+		$ScrollContainer.set_h_scroll(%Messages.size.y)
+		
